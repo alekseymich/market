@@ -4,6 +4,32 @@ $(document).ready(function () {
   });
 });
 
+let menuParents = document.querySelectorAll(".menu-page__parent");
+
+for (let index = 0; index < menuParents.length; index++) {
+  const menuParent = menuParents[index];
+  menuParent.addEventListener("mouseenter", function (e) {
+    menuParent.classList.add("_active");
+  });
+  menuParent.addEventListener("mouseleave", function (e) {
+    menuParent.classList.remove("_active");
+  });
+}
+
+let menuPageBurger = document.querySelector(".menu-page__burger");
+let menuPageBody = document.querySelector(".menu-page__body");
+menuPageBurger.addEventListener("click", function (e) {
+  menuPageBurger.classList.toggle("_active");
+  menuPageBody.classList.toggle("_active");
+});
+$(".menu-page__burger").click(function () {
+  $(".menu-page__body").slideToggle("slow", function () {});
+});
+
+$(".search-page__select").click(function () {
+  $(".search-page__categories").slideToggle("slow", function () {});
+});
+
 (function () {
   let originalPositions = [];
   let daElements = document.querySelectorAll("[data-da]");

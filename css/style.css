@@ -654,8 +654,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .menu-page {
-  position: relative;
   background: url(/img/menu__back.jpg) top no-repeat;
+  position: relative;
 }
 
 .menu-page__header {
@@ -734,8 +734,33 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-.menu-page__list li {
+.menu-page__body {
+  display: none;
+}
+
+.menu-page__body._active {
+  display: block;
+}
+
+.menu-page__list > li {
   border-bottom: 1px solid #1aa7b9;
+}
+
+.menu-page__parent .menu-page__link::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  -webkit-transform: translate(0px, -50%);
+          transform: translate(0px, -50%);
+  background: url(/img/arrow.png) 0 0 no-repeat;
+}
+
+.menu-page__parent._active .submenu-page__item {
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
 }
 
 .menu-page__link {
@@ -748,18 +773,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 12px 20px;
 }
 
-.menu-page__link_parent::after {
-  content: "";
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  width: 14px;
-  height: 14px;
-  -webkit-transform: translate(0px, -50%);
-          transform: translate(0px, -50%);
-  background: url(/img/arrow.png) 0 0 no-repeat;
-}
-
 @media (min-width: 992px) {
   .menu-page__link:hover {
     background-color: #098494;
@@ -767,16 +780,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .menu-page__submenu {
+  width: 100%;
   position: absolute;
   top: 0;
   height: 100%;
   left: 100%;
+  overflow: hidden;
 }
 
-.submenu-page {
+.submenu-page__item {
+  position: absolute;
   width: 280px;
+  width: 100%;
   border: 2px solid #098494;
   background-color: #ffffff;
+  height: 100%;
+  top: 0;
+  left: 0%;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  -webkit-transform: translate(-100%, 0px);
+          transform: translate(-100%, 0px);
 }
 
 .submenu-page__menu {
@@ -913,4 +937,134 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 24px;
   font-weight: 900;
   color: #333333;
+}
+
+.search-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.search-page__select {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #f3f3f3;
+  padding: 0 14px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-page__select ::before {
+  content: "";
+  width: 17px;
+  height: 17px;
+  background: url(/img/icons/search.png) 0 0 no-repeat;
+}
+
+.search-page__select::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: url(/img/icons/arrowDown.png) 0 0 no-repeat;
+}
+
+.search-page__select span {
+  color: #666666;
+  font-weight: 300;
+  margin: 0 13px;
+  border-bottom: 1px dashed;
+}
+
+.search-page__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-page__categories {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+
+.search-page__input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  border-top: 2px solid #f2f2f2;
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.search-page__input .input {
+  height: 100%;
+}
+
+.categories-search {
+  border: 1px solid #f3f3f3;
+  background-color: #fff;
+  display: none;
+  border-bottom: 4px solid #f68038;
+}
+
+.categories-search__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.categories-search__column {
+  float: 0 1 33.333%;
+  padding: 27px 40px;
+  border-right: 1px solid #f3f3f3;
+}
+
+.categories-search__column:last-child {
+  border: 0;
+}
+
+.categories-search__list li {
+  margin: 0 0 15px 0;
+}
+
+.categories-search__list li:last-child {
+  margin: 0;
+}
+
+.categories-search__link {
+  color: #9999;
+}
+
+.btn {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 0px 25px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 39px;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  background-color: #f68038;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+@media (min-width: 992px) {
+  .btn:hover {
+    background-color: #b86029;
+  }
 }
